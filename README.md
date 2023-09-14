@@ -17,3 +17,5 @@
 # 3. git commit -m "commit viesti"
 
 # 4. git push
+
+# 5. git status
