@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Osallistujat</title>
+    <title>Osallistujien tiedot</title>
 </head>
 <body>
-    <h1>Osallistujat</h1>
+    <h1>Osallistujien tiedot</h1>
     <table border="1">
         <tr>
-            <th>ID</th>
-            <th>Nimi</th>
+            <th>Etunimi</th>
+            <th>Sukunimi</th>
+            <th>Sähköposti</th>
         </tr>
+        
         <?php
-        // Käytä DataAccess-luokkaa tietojen hakemiseen tietokannasta
-        require_once 'eventti.php'; // Muuta tämä tarvittaessa
+        // Oletetaan, että olet jo yhdistänyt tietokantaan ja luonut tarvittavan yhteyden, esim. $conn
+        // Tämä on yksinkertainen esimerkki, joka käyttää mysqli-kirjastoa
 
-        // Luodaan tietokantayhteys
-        $dataAccess = new DataAccess();
+        $servername = "localhost"; // Tietokantapalvelimen osoite
+        $username = "root"; // Tietokantakäyttäjän nimi
+        $password = ""; // Tietokantakäyttäjän salasana
+        $dbname = "events_manager"; // Tietokannan nimi
 
-        // Haetaan osallistujat
-        $osallistujat = $dataAccess->haeOsallistujat();
+        // Luodaan yhteys
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-        // Tulostetaan osallistujat taulukkoon
-        foreach ($osallistujat as $osallistuja) {
+        // Tarkistetaan yhteys
+        if (!$conn) {
+            die("Yhteyden muodostaminen epäonnistui: " . mysqli_connect_error());
+        }
+        
+        $query = "SELECT first_name, last_name, email FROM participants";
+        $result = mysqli_query($conn, $query);
+        
+        while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
-            echo "<td>" . $osallistuja['id'] . "</td>";
-            echo "<td>" . $osallistuja['nimi'] . "</td>";
+            echo "<td>" . $row['first_name'] . "</td>";
+            echo "<td>" . $row['last_name'] . "</td>";
+            echo "<td>" . $row['email'] . "</td>";
             echo "</tr>";
         }
-
-        // Suljetaan tietokantayhteys
-        $dataAccess->suljeYhteys();
+        
+        // Muista vapauttaa tietokantayhteys, kun olet valmis
+        mysqli_close($conn);
         ?>
     </table>
 </body>
