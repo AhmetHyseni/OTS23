@@ -1,5 +1,5 @@
 <?php
-class DataAccess
+class MySQLDataAccess
 {
     private $databaseConnection;
 

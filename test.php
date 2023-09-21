@@ -11,11 +11,9 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
-include 'dataaccess.php';
-include 'Participant.php';
-include 'Event.php';
+include 'mysqldataaccess.php';
 
-$dataAccess = new DataAccess($databaseConnection);
+$dataAccess = new MySQLDataAccess($databaseConnection);
 
 // Example: Creating a new Participant
 $participant = new Participant("John Doe");
