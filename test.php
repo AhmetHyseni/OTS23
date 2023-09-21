@@ -1,45 +1,39 @@
 <?php
-require_once 'datamodel.php';
+$host = "localhost"; // Database host (usually "localhost")
+$dbname = "events_manager"; // Your database name
+$username = "login"; // Your database username
+$password = "password123"; // Your database password
 
-// Luodaan osallistujat
-$participant1 = new Participant("John", "Doe", "john@example.com");
-$participant2 = new Participant("Jane", "Smith", "jane@example.com");
+try {
+    $databaseConnection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $databaseConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
 
-// Luodaan tapahtuma
-$event1 = new Event(
-    "Tapahtuma 1",
-    "Tämä on ensimmäinen tapahtuma",
-    "Tapahtumapaikka 1",
-    new DateTime("2023-09-15 10:00:00"),
-    new DateTime("2023-09-15 12:00:00")
-);
+include 'dataaccess.php';
+include 'Participant.php';
+include 'Event.php';
 
-// Lisätään osallistujat tapahtumaan
-$event1->addParticipant($participant1);
-$event1->addParticipant($participant2);
+$dataAccess = new DataAccess($databaseConnection);
 
-// Tulostetaan tiedot HTML-sivulle
-?>
+// Example: Creating a new Participant
+$participant = new Participant("John Doe");
+$dataAccess->addParticipant($participant);
 
-<!DOCTYPE html>
-<html>
+// Example: Creating a new Event
+$event = new Event("Sample Event");
+$dataAccess->addEvent($event);
 
-<head>
-    <title>Tapahtumat</title>
-</head>
+// Example: Retrieving Participants and Events
+$participants = $dataAccess->getParticipants();
+$events = $dataAccess->getEvents();
 
-<body>
-    <h1><?php echo $event1->getTitle(); ?></h1>
-    <p><?php echo $event1->getDescription(); ?></p>
-    <p>Paikka: <?php echo $event1->getAddress(); ?></p>
-    <p>Alkaa: <?php echo $event1->getStartTime()->format('Y-m-d H:i:s'); ?></p>
-    <p>Päättyy: <?php echo $event1->getEndTime()->format('Y-m-d H:i:s'); ?></p>
-    <h2>Osallistujat:</h2>
-    <ul>
-        <?php foreach ($event1->getParticipants() as $participant) : ?>
-            <li><?php echo $participant->getFirstName() . " " . $participant->getLastName(); ?></li>
-        <?php endforeach; ?>
-    </ul>
-</body>
+// Loop through and display participants and events
+foreach ($participants as $participant) {
+    echo "Participant: " . $participant->getName() . " (ID: " . $participant->getID() . ")\n";
+}
 
-</html>
+foreach ($events as $event) {
+    echo "Event: " . $event->getTitle() . " (ID: " . $event->getID() . ")\n";
+}
