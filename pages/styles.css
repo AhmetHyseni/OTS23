@@ -1,0 +1,47 @@
+/* Navigointi-linkit */
+.navigointi {
+    background-color: #02a4cd;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigointilinkit */
+.navigointilinkki {
+    display: flex;
+    align-items: center;
+}
+
+.navigointilinkki a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0 1px; /* Väli enintään 1px */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover-efekti navigointilinkkeihin */
+.navigointilinkki:hover a {
+    background-color: #046e8a;
+    color: #fff;
+}
+
+/* Oikealla oleva logo ja mainos */
+.navigointilinkki p,
+.navigointilinkki img {
+    margin: 0 1px; /* Väli enintään 1px */
+}
+
+/* Lisätään pieni raja "Tai adminin" ja logon väliin */
+.navigointilinkki p::before,
+.navigointilinkki img::before {
+    content: "";
+    display: block;
+    width: 5px; /* Neliön muoto hohtoa varten */
+    height: 5px; /* Neliön muoto hohtoa varten */
+    background-color: transparent;
+    border: 1px solid white;
+    margin: 0 auto; /* Keskitä neliö vaakasuunnassa */
+}
