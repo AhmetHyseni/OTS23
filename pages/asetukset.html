@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asetukset</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .settings-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Asetukset</h1>
+        <form id="settings-form">
+            <div>
+                <label for="theme">Teema:</label>
+                <select id="theme" name="theme">
+                    <option value="light">Valkoinen</option>
+                    <option value="dark">Musta</option>
+                </select>
+            </div>
+            <div>
+                <label for="language">Kieli:</label>
+                <select id="language" name="language">
+                    <option value="fi">Suomi</option>
+                    <option value="en">Englanti</option>
+                    <option value="sv">Ruotsi</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Tallenna</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const settingsForm = document.getElementById("settings-form");
+        const themeSelect = document.getElementById("theme");
+        const languageSelect = document.getElementById("language");
+
+        settingsForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Tallenna valitut asetukset
+            const selectedTheme = themeSelect.value;
+            const selectedLanguage = languageSelect.value;
+
+            // Aseta valittu teema
+            if (selectedTheme === "dark") {
+                document.body.style.backgroundColor = "#333";
+                document.body.style.color = "#fff";
+            } else {
+                document.body.style.backgroundColor = "#fff";
+                document.body.style.color = "#333";
+            }
+
+            // Tässä voit toteuttaa kielenvaihdon toiminnallisuuden
+            // esimerkiksi päivittämällä sivun tekstit valitulla kielellä.
+
+            // Tässä voit lisätä koodin, joka tallentaa asetukset ja
+            // lähettää ne palvelimelle, jos tarpeen.
+
+            // Voit myös lisätä muita toiminnallisuuksia tarpeidesi mukaan.
+
+            alert("Asetukset tallennettu!");
+        });
+    </script>
+</body>
+</html>
+
