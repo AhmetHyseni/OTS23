@@ -12,26 +12,27 @@ try {
 }
 
 include 'mysqldataaccess.php';
+include 'datamodel.php';
 
 $dataAccess = new MySQLDataAccess($databaseConnection);
 
 // Example: Creating a new Participant
-$participant = new Participant("John Doe");
-$dataAccess->addParticipant($participant);
+//$participant = new Participant("John Doe");
+//$dataAccess->addParticipant($participant);
 
 // Example: Creating a new Event
-$event = new Event("Sample Event");
+$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
 $dataAccess->addEvent($event);
 
 // Example: Retrieving Participants and Events
-$participants = $dataAccess->getParticipants();
-$events = $dataAccess->getEvents();
+//$participants = $dataAccess->getParticipants();
+//$events = $dataAccess->getEvents();
 
 // Loop through and display participants and events
-foreach ($participants as $participant) {
-    echo "Participant: " . $participant->getName() . " (ID: " . $participant->getID() . ")\n";
-}
+// foreach ($participants as $participant) {
+//     echo "Participant: " . $participant->getName() . " (ID: " . $participant->getID() . ")\n";
+// }
 
-foreach ($events as $event) {
-    echo "Event: " . $event->getTitle() . " (ID: " . $event->getID() . ")\n";
-}
+// foreach ($events as $event) {
+//     echo "Event: " . $event->getTitle() . " (ID: " . $event->getID() . ")\n";
+// }
