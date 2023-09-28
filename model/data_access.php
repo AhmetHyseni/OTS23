@@ -7,10 +7,11 @@ class DataAccess {
     }
 
     public function addParticipant(Participant $participant) {
-        // Lisää osallistuja tietokantaan
+        // Extract values from the $participant object
     }
+    
 
-    public function getParticipants() {
+    public function getParticipants(Participant $participant) {
         // Hae osallistujat tietokannasta ja palauta ne taulukkona
     }
 

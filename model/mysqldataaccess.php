@@ -11,12 +11,16 @@ class MySQLDataAccess
     // Add a new participant to the database
     public function addParticipant(Participant $participant)
     {
-        $name = $participant->getName();
+        $firstName = $participant->getFirstName();
+        $lastName = $participant->getLastName();
+        $email = $participant->getEmail();
 
-        // Prepare and execute the SQL query to insert the participant
-        $sql = "INSERT INTO participants (name) VALUES (:name)";
+    
+        $sql = "INSERT INTO participants (first_name, last_name, email) VALUES (:firstName, :lastName, :email)";
         $stmt = $this->databaseConnection->prepare($sql);
-        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':firstName', $firstName);
+        $stmt->bindParam(':lastName', $lastName);
+        $stmt->bindParam(':email', $email);
 
         if ($stmt->execute()) {
             // Participant added successfully
@@ -60,5 +64,4 @@ class MySQLDataAccess
 
 
 
-    // Implement other CRUD methods for Participants and Events
 }
