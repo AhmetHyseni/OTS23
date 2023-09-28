@@ -54,6 +54,9 @@ class MySQLDataAccess
             return false;
         }
     }
+    public function getEvents()
+    {
+    }
 
 
 
