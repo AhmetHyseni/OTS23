@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Osallistujalomake</title>
+    <meta charset="UTF-8">
+    <title>Verkkosivusto</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
-    <h1>Osallistujalomake</h1>
+
+    <div class="navigointi">
+        <div class="navigointilinkki">
+            <a href="asetukset.html">Asetukset</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="kayttajat.html">Käyttäjät</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="osallistujat.html">Osallistujat</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="tapahtumat.html">Tapahtumat</a>
+        </div>
+
+        <div class="navigointilinkki">
+            <img src="logo.png" alt="Logo">
+        </div>
+    </div>
+
+    <h1>Muokkaa osallistujaa</h1>
     <form action="osallistujamuokkaus.php" method="post">
-        
+
         <label for="first_name">Etunimi:</label>
         <input type="text" name="first_name" id="firstname" required><br><br>
 
-        <label for="last_name">Etunimi:</label>
+        <label for="last_name">Sukunimi:</label>
         <input type="text" name="last_name" id="lastname" required><br><br>
-        
+
         <label for="email">Sähköposti:</label>
         <input type="email" name="email" id="email" required><br><br>
-        
+
         <input type="submit" value="Lähetä">
     </form>
+
 </body>
+
 </html>
