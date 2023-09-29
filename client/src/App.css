@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.lomake {
+  padding: 20px;
+  float: left;
+  width: 50%;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+button {
+  display: block;
+  margin-top: 20px;
+}
+
+.tiedot {
+  padding: 20px;
+  float: left; 
+  width: 50%;
+}
+
+.kortti {
+  padding: 10px;
+  background-color: #C0C0C0;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
