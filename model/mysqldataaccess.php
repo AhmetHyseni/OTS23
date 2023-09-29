@@ -8,6 +8,8 @@ class MySQLDataAccess
         $this->databaseConnection = $databaseConnection;
     }
 
+    
+
     // Add a new participant to the database
     public function addParticipant(Participant $participant)
     {
@@ -30,6 +32,29 @@ class MySQLDataAccess
             return false;
         }
     }
+
+    public function updateParticipant(Participant $participant) {
+        $firstName = $participant->getFirstName();
+        $lastName = $participant->getLastName();
+        $email = $participant->getEmail();
+    
+        // Use a prepared statement to update the participant's information
+        $sql = "UPDATE participants SET first_name = :firstName, last_name = :lastName, email = :email";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->bindParam(':firstName', $firstName);
+        $stmt->bindParam(':lastName', $lastName);
+        $stmt->bindParam(':email', $email);
+    
+        if ($stmt->execute()) {
+            // Participant updated successfully
+            return true;
+        } else {
+            // Error occurred while updating participant
+            return false;
+        }
+    }
+    
+ 
     // EVENT --------------------------------------------------------------------------
 
     // Add a new event to the database
