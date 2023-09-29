@@ -45,3 +45,15 @@
     border: 1px solid white;
     margin: 0 auto; /* Keskitä neliö vaakasuunnassa */
 }
+.main {
+    display: flex;
+}
+.tittelit {
+    background-color: #ff0000;
+}
+.osastot {
+    background-color: #ff0000;
+}
+.työpaikat {
+    background-color: #ff0000;
+}
