@@ -5,45 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tietokannasta tiedot</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: white; /* Valkoinen teksti */
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        color: Black;
+        margin: 0;
+        padding: 0;
+    }
 
-        h1 {
-            text-align: center;
-            color: black;
-        }
+    h1 {
+        text-align: center;
+        color: #333; /* Tumma teksti */
+    }
 
-        table {
-            width: 80%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
+    table {
+        width: 80%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background-color: white; /* Valkoinen tausta taulukolle */
+    }
 
-        table, th, td {
-            border: 1px solid white;
-        }
+    table, th, td {
+        border: 1px solid #333; /* Tummat reunukset */
+    }
 
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
 
-        th {
-            background-color: #333; /* Tumma tausta otsikolle */
-        }
+    th {
+        background-color: #333;
+        color: white;
+    }
 
-        tr:nth-child(even) {
-            background-color: #666; /* Tumma tausta parillisille riveille */
-        }
+    tr:nth-child(even) {
+        background-color: #cce6ff; /* Vaaleansininen tausta parillisille riveille */
+    }
 
-        tr:nth-child(odd) {
-            background-color: #444; /* Tumma tausta parittomille riveille */
-        }
-    </style>
+    tr:nth-child(odd) {
+        background-color: #99ccff; /* Vaaleansininen tausta parittomille riveille */
+    }
+</style>
+
 </head>
 <body>
     <h1>Tapahtumalista</h1>
