@@ -42,7 +42,7 @@
     width: 5px; /* Neliön muoto hohtoa varten */
     height: 5px; /* Neliön muoto hohtoa varten */
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid rgb(240, 233, 233);
     margin: 0 auto; /* Keskitä neliö vaakasuunnassa */
 }
 .main {
