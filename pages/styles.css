@@ -47,13 +47,68 @@
 }
 .main {
     display: flex;
-}
+    justify-content: space-between; /* Distribute items with equal space between them */
+    align-items: center; /* Vertically center items within the container */
+    height: 100%;
+    margin: 2%; /* Add margin to create space between divs */
+  }
 .tittelit {
-    background-color: #ff0000;
+    display: grid;
+    place-items: left;
 }
 .osastot {
-    background-color: #ff0000;
+    display: grid;
+    place-items: center;
 }
 .työpaikat {
-    background-color: #ff0000;
+    display: grid;
+    place-items: right;
 }
+.tittelit, .osastot, .työpaikat {
+    top: 1vh;
+    flex: 1; /* Distribute available space evenly among the three divs */
+    text-align: center; /* Center the content horizontally within each div */
+    margin: 0 10px; /* Add margin to create space between divs */
+  }
+  .item {
+    flex: 1; /* Distribute available space evenly among the three divs */
+    text-align: center; /* Center the content horizontally within each div */
+    border: 1px solid #ccc; /* Optional: Add borders for better visualization */
+    margin: 0 10px; /* Add margin to create space between divs */
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px; /* Adjust the gap between elements as needed */
+  }
+  
+  /* Style for text boxes */
+  .textbox {
+    margin-top: 10px; /* Add space between the div content and the text box */
+    width: 80%; /* Adjust the width of the text box as needed */
+    padding: 5px; /* Optional: Add padding for better appearance */
+  }
+  
+  /* Style for delete icons */
+  .delete-icon {
+    margin-top: 10px; /* Add space between the text box and the delete icon */
+    width: 24px; /* Adjust the width of the icon as needed */
+    height: 24px; /* Adjust the height of the icon as needed */
+    cursor: pointer; /* Add a pointer cursor for interactivity */
+  }
+  .add-more-button {
+    margin-top: 10px;
+    background-color: #02a4cd;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }

@@ -25,9 +25,90 @@
       </div>
     </div>
     <div class="main">
-      <div class="tittelit">1</div>
-      <div class="osastot">2</div>
-      <div class="työpaikat">3</div>
+      <div class="item">
+        <div class="content">
+          <div class="tittelit">Titteli</div>
+          <div class="input-container">
+            <input type="text" class="textbox" placeholder="Text box 1" />
+            <img
+              src="icons/trash_can.png"
+              alt="Delete"
+              class="delete-icon"
+              onclick="deleteInput(this)"
+            />
+            <button class="add-more-button" onclick="addInput(this)">
+              Add More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">
+          <div class="osastot">Osastot</div>
+          <div class="input-container">
+            <input type="text" class="textbox" placeholder="Text box 1" />
+            <img
+              src="icons/trash_can.png"
+              alt="Delete"
+              class="delete-icon"
+              onclick="deleteInput(this)"
+            />
+            <button class="add-more-button" onclick="addInput(this)">
+              Add More
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">
+          <div class="työpaikat">työpaikat</div>
+          <div class="input-container">
+            <input type="text" class="textbox" placeholder="Text box 1" />
+            <img
+              src="icons/trash_can.png"
+              alt="Delete"
+              class="delete-icon"
+              onclick="deleteInput(this)"
+            />
+            <button class="add-more-button" onclick="addInput(this)">
+              Add More
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+    <script>
+      // Function to delete the input field
+      function deleteInput(deleteIcon) {
+        const input = deleteIcon.previousElementSibling;
+        input.remove();
+        deleteIcon.remove();
+        addMoreButton.remove();
+      }
+
+      // Function to add a new input field
+      function addInput(button) {
+        const inputContainer = button.parentNode; // Get the parent container
+        const newInput = document.createElement("input");
+        newInput.type = "text";
+        newInput.className = "textbox";
+        newInput.placeholder = "New Text Box";
+
+        const deleteIcon = document.createElement("img");
+        deleteIcon.src = "icons/trash_can.png";
+        deleteIcon.alt = "Delete";
+        deleteIcon.className = "delete-icon";
+        deleteIcon.onclick = function () {
+          deleteInput(deleteIcon);
+        };
+
+        inputContainer.appendChild(newInput);
+        inputContainer.appendChild(deleteIcon);
+        inputContainer.appendChild(addMoreButton);
+
+        // Append the new input container below the existing one
+        inputContainer.parentNode.appendChild(newInputContainer);
+      }
+    </script>
   </body>
 </html>

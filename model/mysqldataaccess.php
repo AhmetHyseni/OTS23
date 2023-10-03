@@ -56,6 +56,32 @@ class MySQLDataAccess
     }
     public function getEvents()
     {
+        $sql = "SELECT * FROM events";
+        $stmt = $this->databaseConnection->prepare($sql);
+
+        if ($stmt->execute()) {
+            // Fetch all events as an associative array
+            $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $events;
+        } else {
+            // Error occurred while fetching events
+            return false;
+        }
+    }
+    public function deleteEvent($eventId)
+    {
+        // Prepare and execute the SQL query to delete an event by its ID
+        $sql = "DELETE FROM events WHERE id = :eventId";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->bindParam(':eventId', $eventId, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            // Event deleted successfully
+            return true;
+        } else {
+            // Error occurred while deleting event
+            return false;
+        }
     }
 
 
