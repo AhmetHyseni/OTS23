@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
@@ -61,39 +60,5 @@
             <p>Tässä on tapahtuma 2:n kuvaus. Voit lisätä tähän lisätietoja tapahtumasta.</p>
         </div>
     </div>
-=======
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Verkkosivusto</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-
-    <div class="navigointi">
-        <div class="navigointilinkki">
-            <a href="asetukset.html">Asetukset</a>
-        </div>
-        <div class="navigointilinkki">
-            <a href="kayttajat.html">Käyttäjät</a>
-        </div>
-        <div class="navigointilinkki">
-            <a href="osallistujat.html">Osallistujat</a>
-        </div>
-        <div class="navigointilinkki">
-            <a href="tapahtumat.html">Tapahtumat</a>
-        </div>
-
-        <div class="navigointilinkki">
-            <img src="logo.png" alt="Logo">
-        </div>
-    </div>
-
-    <div class="tapahtumat" id="tapahtumat-container">
-        <h2>Tapahtumat</h2>
-        <?php include 'tapahtumat.php'; ?>
-    </div>
-
->>>>>>> main
 </body>
 </html>
