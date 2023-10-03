@@ -33,6 +33,27 @@ class MySQLDataAccess
         }
     }
 
+    public function getParticipants() {
+        $participants = array(); // Initialize an empty array to store participants
+    
+        // Prepare and execute a query to fetch participants
+        $sql = "SELECT * FROM participants";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->execute();
+    
+        // Fetch results and add them to the $participants array
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $participant = new Participant("Jane", "Smith", "jangg@example.com");
+            $participant->setFirstName($row['first_name']);
+            $participant->setLastName($row['last_name']);
+            $participant->setEmail($row['email']);
+            $participants[] = $participant;
+        }
+    
+        return $participants;
+    }
+    
     public function updateParticipant(Participant $participant) {
         $firstName = $participant->getFirstName();
         $lastName = $participant->getLastName();
@@ -54,6 +75,23 @@ class MySQLDataAccess
         }
     }
     
+    public function deleteParticipant(Participant $participant) {
+        $email = $participant->getEmail(); // Assuming you have a method to retrieve the participant's email
+    
+        // Use a prepared statement to delete the participant by their email
+        $sql = "DELETE FROM participants WHERE email = ?";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->bind_param("s", $email); // "s" represents a string, adjust if email is of a different type
+    
+        if ($stmt->execute()) {
+            // Participant deleted successfully
+            return true;
+        } else {
+            // Error occurred while deleting participant
+            return false;
+        }
+    }
+        
  
     // EVENT --------------------------------------------------------------------------
 

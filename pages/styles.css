@@ -57,3 +57,13 @@
 .työpaikat {
     background-color: #ff0000;
 }
+.lisaa-osallistujat-button {
+    position: absolute;
+    top: 10px;
+    left: 10px; 
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}

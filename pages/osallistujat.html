@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Verkkosivusto</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Add some CSS for the button */
+        .lisaa-osallistujat-button {
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+
+    <a href="lisaa-osallistujat.html" class="lisaa-osallistujat-button">Lisää osallistujat</a>
 
     <div class="navigointi">
         <div class="navigointilinkki">
@@ -26,7 +41,9 @@
         </div>
     </div>
 
-    
+    <div class="tapahtumat" id="tapahtumat-container">
+        <?php include 'mysqldataacceess.php'; ?>
+    </div>
 
 </body>
 </html>
