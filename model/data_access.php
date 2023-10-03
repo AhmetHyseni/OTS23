@@ -11,9 +11,9 @@ class DataAccess {
     }
     
 
-    public function getParticipants(Participant $participant) {
-        // Hae osallistujat tietokannasta ja palauta ne taulukkona
-    }
+        public function getParticipants(Participant $participant) {
+            // Hae osallistujat tietokannasta ja palauta ne taulukkona
+        }
 
     public function updateParticipant(Participant $participant) {
         // Päivitä osallistuja tietokannassa
