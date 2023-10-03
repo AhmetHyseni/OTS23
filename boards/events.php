@@ -3,50 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tietokannasta tiedot</title>
+    <title>Tapahtumalista</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        color: Black;
-        margin: 0;
-        padding: 0;
-    }
-
-    h1 {
-        text-align: center;
-        color: #333; /* Tumma teksti */
-    }
-
-    table {
-        width: 80%;
-        margin: 0 auto;
-        border-collapse: collapse;
-        background-color: white; /* Valkoinen tausta taulukolle */
-    }
-
-    table, th, td {
-        border: 1px solid #333; /* Tummat reunukset */
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-    }
-
-    th {
-        background-color: #333;
-        color: white;
-    }
-
-    tr:nth-child(even) {
-        background-color: #cce6ff; /* Vaaleansininen tausta parillisille riveille */
-    }
-
-    tr:nth-child(odd) {
-        background-color: #99ccff; /* Vaaleansininen tausta parittomille riveille */
-    }
-</style>
-
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff; /* Light blue background */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .event-list {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff; /* White background for events */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .event-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .event-title {
+            font-weight: bold;
+            font-size: 30px;
+            color: #333; /* Dark text color */
+        }
+        .event-date {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <h1>Tapahtumalista</h1>
@@ -72,12 +60,17 @@
     // Tarkistetaan, onko tuloksia
     if ($result->num_rows > 0) {
         // Tulostetaan tiedot HTML-taulukkoon
-        echo "<table>";
-        echo "<tr><th>Otsikko</th><th>Kuvaus</th><th>Osoite</th><th>Aloitus-aika</th><th>Lopetus-aika</th></tr>";
+        echo "<div class='event-list'>";
         while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["title"]. "</td><td>" . $row["description"]. "</td><td>" . $row["address"]. "</td><td>" . $row["start_time"]. "</td><td>" . $row["end_time"]. "</td></tr>";
+            echo "<div class='event-item'>";
+            echo "<p class='event-title'>" . $row["title"] . "</p>";
+            echo "<p>" . $row["description"] . "</p>";
+            echo "<p>Osoite: " . $row["address"] . "</p>";
+            echo "<p class='event-date'>Aloitus-aika: " . $row["start_time"] . "</p>";
+            echo "<p class='event-date'>Lopetus-aika: " . $row["end_time"] . "</p>";
+            echo "</div>";
         }
-        echo "</table>";
+        echo "</div>";
     } else {
         echo "Ei tuloksia";
     }
@@ -88,4 +81,5 @@
 
 </body>
 </html>
+
 
