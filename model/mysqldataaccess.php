@@ -8,15 +8,21 @@ class MySQLDataAccess
         $this->databaseConnection = $databaseConnection;
     }
 
+    
+
     // Add a new participant to the database
     public function addParticipant(Participant $participant)
     {
-        $name = $participant->getName();
+        $firstName = $participant->getFirstName();
+        $lastName = $participant->getLastName();
+        $email = $participant->getEmail();
 
-        // Prepare and execute the SQL query to insert the participant
-        $sql = "INSERT INTO participants (name) VALUES (:name)";
+    
+        $sql = "INSERT INTO participants (first_name, last_name, email) VALUES (:firstName, :lastName, :email)";
         $stmt = $this->databaseConnection->prepare($sql);
-        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':firstName', $firstName);
+        $stmt->bindParam(':lastName', $lastName);
+        $stmt->bindParam(':email', $email);
 
         if ($stmt->execute()) {
             // Participant added successfully
@@ -26,6 +32,67 @@ class MySQLDataAccess
             return false;
         }
     }
+
+    public function getParticipants() {
+        $participants = array(); // Initialize an empty array to store participants
+    
+        // Prepare and execute a query to fetch participants
+        $sql = "SELECT * FROM participants";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->execute();
+    
+        // Fetch results and add them to the $participants array
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $participant = new Participant("Jane", "Smith", "jangg@example.com");
+            $participant->setFirstName($row['first_name']);
+            $participant->setLastName($row['last_name']);
+            $participant->setEmail($row['email']);
+            $participants[] = $participant;
+        }
+    
+        return $participants;
+    }
+    
+    public function updateParticipant(Participant $participant) {
+        $firstName = $participant->getFirstName();
+        $lastName = $participant->getLastName();
+        $email = $participant->getEmail();
+    
+        // Use a prepared statement to update the participant's information
+        $sql = "UPDATE participants SET first_name = :firstName, last_name = :lastName, email = :email";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->bindParam(':firstName', $firstName);
+        $stmt->bindParam(':lastName', $lastName);
+        $stmt->bindParam(':email', $email);
+    
+        if ($stmt->execute()) {
+            // Participant updated successfully
+            return true;
+        } else {
+            // Error occurred while updating participant
+            return false;
+        }
+    }
+    
+    public function deleteParticipant(Participant $participant) {
+        $email = $participant->getEmail(); // Assuming you have a method to retrieve the participant's email
+    
+        // Use a prepared statement to delete the participant by their email
+        $sql = "DELETE FROM participants WHERE email = ?";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->bind_param("s", $email); // "s" represents a string, adjust if email is of a different type
+    
+        if ($stmt->execute()) {
+            // Participant deleted successfully
+            return true;
+        } else {
+            // Error occurred while deleting participant
+            return false;
+        }
+    }
+        
+ 
     // EVENT --------------------------------------------------------------------------
 
     // Add a new event to the database
@@ -86,5 +153,4 @@ class MySQLDataAccess
 
 
 
-    // Implement other CRUD methods for Participants and Events
 }

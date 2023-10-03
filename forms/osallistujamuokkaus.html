@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
+    <title>Verkkosivusto</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
 
     <div class="navigointi">
@@ -21,22 +24,21 @@
         </div>
     </div>
 
-    <h1>Muokkaa käyttäjää</h1>
-    <form action="kayttajamuokkaus.php" method="post">
-        
+    <h1>Muokkaa osallistujaa</h1>
+    <form action="osallistujamuokkaus.php" method="post">
+
         <label for="first_name">Etunimi:</label>
         <input type="text" name="first_name" id="firstname" required><br><br>
 
         <label for="last_name">Sukunimi:</label>
         <input type="text" name="last_name" id="lastname" required><br><br>
 
-        <label for="password">Salasana:</label>
-        <input type="text" name="password" id="password" required><br><br>
-        
         <label for="email">Sähköposti:</label>
         <input type="email" name="email" id="email" required><br><br>
-        
+
         <input type="submit" value="Lähetä">
     </form>
+
 </body>
+
 </html>
