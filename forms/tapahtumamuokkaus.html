@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Verkkosivusto</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="navigointi">
+      <div class="navigointilinkki">
+        <a href="asetukset.html">Asetukset</a>
+      </div>
+      <div class="navigointilinkki">
+        <a href="kayttajat.html">Käyttäjät</a>
+      </div>
+      <div class="navigointilinkki">
+        <a href="osallistujat.html">Osallistujat</a>
+      </div>
+      <div class="navigointilinkki">
+        <a href="tapahtumat.html">Tapahtumat</a>
+      </div>
+      <div class="navigointilinkki">
+        <img src="logo.png" alt="Logo" />
+      </div>
+    </div>
+
+    <h1>Muokkaa tapahtumaa</h1>
+    <form action="tapahtumamuokkaus.php" method="post">
+      <label for="title">Otsikko:</label>
+      <input type="text" name="title" id="title" required><br><br>
+
+      <label for="description">Kuvaus:</label>
+      <input type="text" name="description" id="description" required><br><br>
+
+      <label for="address">Osoite:</label>
+      <input type="text" name="address" id="address" required><br><br>
+
+      <label for="start_time">Aloitus:</label>
+      <input type="date" name="start_time" id="start_time" required><br><br>
+
+      <label for="end_time">Loppuu:</label>
+      <input type="date" name="end_time" id="end_time" required><br><br>
+
+      <input type="submit" value="Lähetä">
+    </form>
+  </body>
+</html>
