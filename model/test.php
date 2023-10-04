@@ -17,14 +17,16 @@ include 'datamodel.php';
 $dataAccess = new MySQLDataAccess($databaseConnection);
 
 // Example: Creating a new Participant
-//$participant = new Participant("John Doe");
-//$dataAccess->addParticipant($participant);
+// $participant = new Participant("John Doe");
+// $dataAccess->addParticipant($participant);
 
 // Example: Creating a new Event
 //$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
 //$dataAccess->addEvent($event);
 
 // Example: Retrieving Participants and Events
+// $participants = $dataAccess->getParticipants();
+// $events = $dataAccess->getEvents();
 $participant = new Participant("Jane", "Smith", "janee@example.com");
 
 $dataAccess->addParticipant($participant);
