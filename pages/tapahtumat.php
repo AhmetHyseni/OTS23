@@ -3,49 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tapahtumat</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Tapahtumalista</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            color: white; /* Valkoinen teksti */
+            background-color: #e6f7ff; /* Light blue background */
+            text-align: center;
             margin: 0;
             padding: 0;
         }
-
-        h1 {
-            text-align: center;
-            color: black;
-        }
-
-        table {
-            width: 80%;
+        .event-list {
+            max-width: 600px;
             margin: 0 auto;
-            border-collapse: collapse;
+            background-color: #fff; /* White background for events */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
         }
-
-        table, th, td {
-            border: 1px solid white;
+        .event-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
+        .event-title {
+            font-weight: bold;
+            font-size: 30px;
+            color: #333; /* Dark text color */
         }
-
-        th {
-            background-color: #333; /* Tumma tausta otsikolle */
-        }
-
-        tr:nth-child(even) {
-            background-color: #666; /* Tumma tausta parillisille riveille */
-        }
-
-        tr:nth-child(odd) {
-            background-color: #444; /* Tumma tausta parittomille riveille */
+        .event-date {
+            color: #555;
         }
     </style>
 </head>
 <body>
+
+<div class="navigointi">
+        <div class="navigointilinkki">
+            <a href="asetukset.html">Asetukset</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="käyttäjät.html">Käyttäjät</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="osallistujat.html">Osallistujat</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="tapahtumat.php">Tapahtumat</a>
+        </div>
+
+    </div>
+
     <h1>Tapahtumalista</h1>
 
     <?php
@@ -69,12 +78,17 @@
     // Tarkistetaan, onko tuloksia
     if ($result->num_rows > 0) {
         // Tulostetaan tiedot HTML-taulukkoon
-        echo "<table>";
-        echo "<tr><th>Otsikko</th><th>Kuvaus</th><th>Osoite</th><th>Aloitus-aika</th><th>Lopetus-aika</th></tr>";
+        echo "<div class='event-list'>";
         while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["title"]. "</td><td>" . $row["description"]. "</td><td>" . $row["address"]. "</td><td>" . $row["start_time"]. "</td><td>" . $row["end_time"]. "</td></tr>";
+            echo "<div class='event-item'>";
+            echo "<p class='event-title'>" . $row["title"] . "</p>";
+            echo "<p>" . $row["description"] . "</p>";
+            echo "<p>Osoite: " . $row["address"] . "</p>";
+            echo "<p class='event-date'>Aloitus-aika: " . $row["start_time"] . "</p>";
+            echo "<p class='event-date'>Lopetus-aika: " . $row["end_time"] . "</p>";
+            echo "</div>";
         }
-        echo "</table>";
+        echo "</div>";
     } else {
         echo "Ei tuloksia";
     }
