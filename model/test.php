@@ -1,8 +1,8 @@
 <?php
 $host = "localhost"; // Database host (usually "localhost")
-$dbname = "database"; // Your database name
-$username = "user1"; // Your database username
-$password = "Qwerty1"; // Your database password
+$dbname = "events_manager"; // Your database name
+$username = "login"; // Your database username
+$password = "password123"; // Your database password
 
 try {
     $databaseConnection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -21,22 +21,22 @@ $dataAccess = new MySQLDataAccess($databaseConnection);
 // $dataAccess->addParticipant($participant);
 
 // Example: Creating a new Event
-//$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
+$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
 //$dataAccess->addEvent($event);
 
 // Example: Retrieving Participants and Events
 // $participants = $dataAccess->getParticipants();
 // $events = $dataAccess->getEvents();
-$participant = new Participant("Jane", "Smith", "janee@example.com");
+//$participant = new Participant("Jane", "Smith", "janee@example.com");
 
-$dataAccess->addParticipant($participant);
-//$events = $dataAccess->getEvents();
+//$dataAccess->addParticipant($participant);
+$events = $dataAccess->getEvents();
 
 // Loop through and display participants and events
 // foreach ($addParticipant as $participant) {
-  //   echo "Participant: " . $participant->getName() . " (ID: " . $participant->addID() . ")\n";
- //}
+//   echo "Participant: " . $participant->getName() . " (ID: " . $participant->addID() . ")\n";
+//}
 
-// foreach ($events as $event) {
-//     echo "Event: " . $event->getTitle() . " (ID: " . $event->getID() . ")\n";
-// }
+foreach ($events as $eventx) {
+    echo "Event: " . $eventx->getTitle() . " Description: " . $eventx->getDescription() . " Address: " . $eventx->getAddress() . " Start Time: " . $eventx->getStartTime() . " End Time: " . $eventx->getEndTime() . " (ID: " . $eventx->getID() . ") <br>";
+}

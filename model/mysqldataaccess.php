@@ -8,7 +8,7 @@ class MySQLDataAccess
         $this->databaseConnection = $databaseConnection;
     }
 
-    
+
 
     // Add a new participant to the database
     public function addParticipant(Participant $participant)
@@ -17,7 +17,7 @@ class MySQLDataAccess
         $lastName = $participant->getLastName();
         $email = $participant->getEmail();
 
-    
+
         $sql = "INSERT INTO participants (first_name, last_name, email) VALUES (:firstName, :lastName, :email)";
         $stmt = $this->databaseConnection->prepare($sql);
         $stmt->bindParam(':firstName', $firstName);
@@ -33,14 +33,15 @@ class MySQLDataAccess
         }
     }
 
-    public function getParticipants() {
+    public function getParticipants()
+    {
         $participants = array(); // Initialize an empty array to store participants
-    
+
         // Prepare and execute a query to fetch participants
         $sql = "SELECT * FROM participants";
         $stmt = $this->databaseConnection->prepare($sql);
         $stmt->execute();
-    
+
         // Fetch results and add them to the $participants array
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
@@ -50,22 +51,23 @@ class MySQLDataAccess
             $participant->setEmail($row['email']);
             $participants[] = $participant;
         }
-    
+
         return $participants;
     }
-    
-    public function updateParticipant(Participant $participant) {
+
+    public function updateParticipant(Participant $participant)
+    {
         $firstName = $participant->getFirstName();
         $lastName = $participant->getLastName();
         $email = $participant->getEmail();
-    
+
         // Use a prepared statement to update the participant's information
         $sql = "UPDATE participants SET first_name = :firstName, last_name = :lastName, email = :email";
         $stmt = $this->databaseConnection->prepare($sql);
         $stmt->bindParam(':firstName', $firstName);
         $stmt->bindParam(':lastName', $lastName);
         $stmt->bindParam(':email', $email);
-    
+
         if ($stmt->execute()) {
             // Participant updated successfully
             return true;
@@ -74,15 +76,16 @@ class MySQLDataAccess
             return false;
         }
     }
-    
-    public function deleteParticipant(Participant $participant) {
+
+    public function deleteParticipant(Participant $participant)
+    {
         $email = $participant->getEmail(); // Assuming you have a method to retrieve the participant's email
-    
+
         // Use a prepared statement to delete the participant by their email
         $sql = "DELETE FROM participants WHERE email = ?";
         $stmt = $this->databaseConnection->prepare($sql);
         $stmt->bind_param("s", $email); // "s" represents a string, adjust if email is of a different type
-    
+
         if ($stmt->execute()) {
             // Participant deleted successfully
             return true;
@@ -91,8 +94,8 @@ class MySQLDataAccess
             return false;
         }
     }
-        
- 
+
+
     // EVENT --------------------------------------------------------------------------
 
     // Add a new event to the database
@@ -128,13 +131,21 @@ class MySQLDataAccess
 
         if ($stmt->execute()) {
             // Fetch all events as an associative array
-            $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $events = array();
+            $sqlevents = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($sqlevents as $sqlevent) {
+                $event = new Event($sqlevent["title"], $sqlevent["description"], $sqlevent["address"], $sqlevent["start_time"], $sqlevent["end_time"]);
+                $events[] = $event;
+            }
             return $events;
         } else {
             // Error occurred while fetching events
-            return false;
+            return [];
         }
     }
+
+
+
     public function deleteEvent($eventId)
     {
         // Prepare and execute the SQL query to delete an event by its ID
@@ -150,7 +161,4 @@ class MySQLDataAccess
             return false;
         }
     }
-
-
-
 }

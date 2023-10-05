@@ -37,12 +37,17 @@ class Participant {
 }
 
 class Event {
+    private $ID;
     private $title;
     private $description;
     private $address;
     private $startTime;
     private $endTime;
     private $participants = array();
+
+    public function getID(){
+        return $this->ID;
+    }
 
     public function __construct($title, $description, $address, $startTime, $endTime) {
         $this->title = $title;
@@ -107,5 +112,3 @@ class Event {
         }
     }
 }
-
-?>
