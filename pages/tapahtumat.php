@@ -59,7 +59,7 @@
             <a href="osallistujat.html">Osallistujat</a>
         </div>
         <div class="navigointilinkki">
-            <a href="tapahtumat.html">Tapahtumat</a>
+            <a href="tapahtumat.php">Tapahtumat</a>
         </div>
 
         <div class="navigointilinkki">
