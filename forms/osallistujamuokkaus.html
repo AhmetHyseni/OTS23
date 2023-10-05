@@ -11,20 +11,20 @@
 
     <div class="navigointi">
         <div class="navigointilinkki">
-            <a href="asetukset.html">Asetukset</a>
+            <a href="/OTS23/pages/asetukset.html">Asetukset</a>
         </div>
         <div class="navigointilinkki">
-            <a href="kayttajat.html">Käyttäjät</a>
+            <a href="/OTS23/pages/käyttäjät.html">Käyttäjät</a>
         </div>
         <div class="navigointilinkki">
-            <a href="osallistujat.html">Osallistujat</a>
+            <a href="/OTS23/pages/osallistujat.html">Osallistujat</a>
         </div>
         <div class="navigointilinkki">
-            <a href="tapahtumat.html">Tapahtumat</a>
+            <a href="/OTS23/pages/tapahtumat.html">Tapahtumat</a>
         </div>
     </div>
 
-    <h1>Muokkaa osallistujaa</h1>
+    <h1>Muokkaa osallistujaa:</h1>
     <form action="osallistujamuokkaus.php" method="post">
 
         <label for="first_name">Etunimi:</label>
@@ -36,7 +36,10 @@
         <label for="email">Sähköposti:</label>
         <input type="email" name="email" id="email" required><br><br>
 
-        <input type="submit" value="Lähetä">
+        <input type="submit" value="Tallenna">
+        <a href="/OTS23/pages/osallistujat.html">
+            <input type="button" value="Peruuta" />
+        </a>
     </form>
 
 </body>
