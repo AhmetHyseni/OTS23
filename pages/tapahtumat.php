@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tietokannasta tiedot</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Tapahtumat</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,6 +47,26 @@
     </style>
 </head>
 <body>
+
+<div class="navigointi">
+        <div class="navigointilinkki">
+            <a href="asetukset.html">Asetukset</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="kayttajat.html">Käyttäjät</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="osallistujat.html">Osallistujat</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="tapahtumat.html">Tapahtumat</a>
+        </div>
+
+        <div class="navigointilinkki">
+            <img src="logo.png" alt="Logo">
+        </div>
+    </div>
+
     <h1>Tapahtumalista</h1>
 
     <?php
