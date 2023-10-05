@@ -1,8 +1,8 @@
 <?php
 $host = "localhost"; // Database host (usually "localhost")
-$dbname = "database"; // Your database name
-$username = "user1"; // Your database username
-$password = "Qwerty1"; // Your database password
+$dbname = "events_manager"; // Your database name
+$username = "login"; // Your database username
+$password = "password123"; // Your database password
 
 try {
     $databaseConnection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -21,7 +21,7 @@ $dataAccess = new MySQLDataAccess($databaseConnection);
 // $dataAccess->addParticipant($participant);
 
 // Example: Creating a new Event
-//$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
+$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
 //$dataAccess->addEvent($event);
 
 // Example: Retrieving Participants and Events
@@ -39,28 +39,28 @@ $dataAccess->updateParticipant($participant);
 
 // Check if the participant exists
 //if ($existingParticipant) {
-  //  // Update the participant object with the new data
-    //$existingParticipant->setFirstName($updatedParticipant->getFirstName());
+//  // Update the participant object with the new data
+//$existingParticipant->setFirstName($updatedParticipant->getFirstName());
 //    $existingParticipant->setLastName($updatedParticipant->getLastName());
-  //  $existingParticipant->setEmail($updatedParticipant->getEmail());
+//  $existingParticipant->setEmail($updatedParticipant->getEmail());
 
-    // Update the participant in the database
-  //  if ($dataAccess->updateParticipant($existingParticipant)) {
+// Update the participant in the database
+//  if ($dataAccess->updateParticipant($existingParticipant)) {
 //        echo "Participant information updated successfully!";
- //   } else {
-   //     echo "Error occurred while updating participant information.";
+//   } else {
+//     echo "Error occurred while updating participant information.";
 //    }
 //} else {
-  //  echo "Participant not found.";
+//  echo "Participant not found.";
 //}
 
 //$events = $dataAccess->getEvents();
 
 // Loop through and display participants and events
 // foreach ($addParticipant as $participant) {
-  //   echo "Participant: " . $participant->getName() . " (ID: " . $participant->addID() . ")\n";
- //}
+//   echo "Participant: " . $participant->getName() . " (ID: " . $participant->addID() . ")\n";
+//}
 
-// foreach ($events as $event) {
-//     echo "Event: " . $event->getTitle() . " (ID: " . $event->getID() . ")\n";
-// }
+foreach ($events as $eventx) {
+    echo "Event: " . $eventx->getTitle() . " Description: " . $eventx->getDescription() . " Address: " . $eventx->getAddress() . " Start Time: " . $eventx->getStartTime() . " End Time: " . $eventx->getEndTime() . " (ID: " . $eventx->getID() . ") <br>";
+}
