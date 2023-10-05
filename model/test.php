@@ -17,7 +17,7 @@ include 'datamodel.php';
 $dataAccess = new MySQLDataAccess($databaseConnection);
 
 // Example: Creating a new Participant
-// $participant = new Participant("John Doe");
+// $participant = new Participant("John Doe");  
 // $dataAccess->addParticipant($participant);
 
 // Example: Creating a new Event
@@ -27,9 +27,33 @@ $dataAccess = new MySQLDataAccess($databaseConnection);
 // Example: Retrieving Participants and Events
 // $participants = $dataAccess->getParticipants();
 // $events = $dataAccess->getEvents();
-$participant = new Participant("Jane", "Smith", "janee@example.com");
+$participant = new Participant("Jaane", "Smmith", "janesse@example.com");
+$participant->setid(7);
+$dataAccess->updateParticipant($participant);
 
-$dataAccess->addParticipant($participant);
+// Assuming you have an existing Participant object with the new data
+//$updatedParticipant = new Participant(7, "NewFirstName", "NewLastName", "newemail@example.com");
+
+// Retrieve the existing data for the participant from the database
+//$existingParticipant = $dataAccess->getParticipantById($updatedParticipant->getId());
+
+// Check if the participant exists
+//if ($existingParticipant) {
+  //  // Update the participant object with the new data
+    //$existingParticipant->setFirstName($updatedParticipant->getFirstName());
+//    $existingParticipant->setLastName($updatedParticipant->getLastName());
+  //  $existingParticipant->setEmail($updatedParticipant->getEmail());
+
+    // Update the participant in the database
+  //  if ($dataAccess->updateParticipant($existingParticipant)) {
+//        echo "Participant information updated successfully!";
+ //   } else {
+   //     echo "Error occurred while updating participant information.";
+//    }
+//} else {
+  //  echo "Participant not found.";
+//}
+
 //$events = $dataAccess->getEvents();
 
 // Loop through and display participants and events
