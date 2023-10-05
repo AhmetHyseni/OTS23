@@ -1,64 +1,87 @@
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tapahtumalista</title>
+    <title>Tietokannasta tiedot</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            color: white; /* Valkoinen teksti */
+            margin: 0;
+            padding: 0;
         }
-        .event-list {
-            max-width: 600px;
+
+        h1 {
+            text-align: center;
+            color: black;
+        }
+
+        table {
+            width: 80%;
             margin: 0 auto;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
+            border-collapse: collapse;
         }
-        .event-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+
+        table, th, td {
+            border: 1px solid white;
         }
-        .event-title {
-            font-weight: bold;
-            font-size: 18px;
+
+        th, td {
+            padding: 8px;
+            text-align: left;
         }
-        .event-date {
-            color: #555;
+
+        th {
+            background-color: #333; /* Tumma tausta otsikolle */
+        }
+
+        tr:nth-child(even) {
+            background-color: #666; /* Tumma tausta parillisille riveille */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #444; /* Tumma tausta parittomille riveille */
         }
     </style>
 </head>
 <body>
-    <div class="event-list">
-        <div class="event-item">
-            <div class="event-title">Tapahtuma 1</div>
-            <div class="event-date">10. lokakuuta 2023</div>
-            <p>Tässä on tapahtuma 1:n kuvaus. Voit lisätä tähän lisätietoja tapahtumasta.</p>
-        </div>
-        <div class="event-item">
-            <div class="event-title">Tapahtuma 2</div>
-            <div class="event-date">15. marraskuuta 2023</div>
-            <p>Tässä on tapahtuma 2:n kuvaus. Voit lisätä tähän lisätietoja tapahtumasta.</p>
-        </div>
-        <div class="event-item">
-            <div class="event-title">Tapahtuma 2</div>
-            <div class="event-date">15. marraskuuta 2023</div>
-            <p>Tässä on tapahtuma 2:n kuvaus. Voit lisätä tähän lisätietoja tapahtumasta.</p>
-        </div>
-        <div class="event-item">
-            <div class="event-title">Tapahtuma 2</div>
-            <div class="event-date">15. marraskuuta 2023</div>
-            <p>Tässä on tapahtuma 2:n kuvaus. Voit lisätä tähän lisätietoja tapahtumasta.</p>
-        </div>
-        <div class="event-item">
-            <div class="event-title">Tapahtuma 2</div>
-            <div class="event-date">15. marraskuuta 2023</div>
-            <p>Tässä on tapahtuma 2:n kuvaus. Voit lisätä tähän lisätietoja tapahtumasta.</p>
-        </div>
-    </div>
+    <h1>Tapahtumalista</h1>
+
+    <?php
+    // Yhdistetään tietokantaan (korvaa tiedot omilla tiedoillasi)
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "events_manager";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Tarkistetaan yhteys
+    if ($conn->connect_error) {
+        die("Yhteys epäonnistui: " . $conn->connect_error);
+    }
+
+    // Suoritetaan SQL-kysely tietojen hakemiseksi
+    $sql = "SELECT title, description, address, start_time, end_time FROM events";
+    $result = $conn->query($sql);
+
+    // Tarkistetaan, onko tuloksia
+    if ($result->num_rows > 0) {
+        // Tulostetaan tiedot HTML-taulukkoon
+        echo "<table>";
+        echo "<tr><th>Otsikko</th><th>Kuvaus</th><th>Osoite</th><th>Aloitus-aika</th><th>Lopetus-aika</th></tr>";
+        while($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $row["title"]. "</td><td>" . $row["description"]. "</td><td>" . $row["address"]. "</td><td>" . $row["start_time"]. "</td><td>" . $row["end_time"]. "</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "Ei tuloksia";
+    }
+
+    // Suljetaan tietokantayhteys
+    $conn->close();
+    ?>
+
 </body>
 </html>
