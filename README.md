@@ -19,3 +19,6 @@
 # 4. git push
 
 # 5. git status
+
+# git reset --hard origin/main
+# en ooo varma mitä se teki
