@@ -28,7 +28,7 @@ $dataAccess = new MySQLDataAccess($databaseConnection);
 // $participants = $dataAccess->getParticipants();
 // $events = $dataAccess->getEvents();
 $participant = new Participant("Jaane", "Smmith", "janesse@example.com");
-
+$participant->setid(7);
 $dataAccess->updateParticipant($participant);
 
 // Assuming you have an existing Participant object with the new data

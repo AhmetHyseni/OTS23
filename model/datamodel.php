@@ -7,6 +7,7 @@ class Participant {
     private $email;
 
     public function __construct( $firstName, $lastName, $email) {
+    
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
@@ -39,7 +40,7 @@ class Participant {
         return $this->id;
     }
     public function setid($id){
-        return $this->$id;
+        $this->id =$id;
     }
 
 }
