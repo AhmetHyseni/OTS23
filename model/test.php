@@ -9,7 +9,7 @@ include 'datamodel.php';
 // $dataAccess->addParticipant($participant);
 
 // Example: Creating a new Event
-//$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
+$event = new Event("opettaja", "random", "street", new DateTime(), new DateTime());
 //$dataAccess->addEvent($event);
 
 // Example: Retrieving Participants and Events
@@ -30,9 +30,9 @@ $dataAccess->deleteParticipant(9);
 
 // Loop through and display participants and events
 // foreach ($addParticipant as $participant) {
-  //   echo "Participant: " . $participant->getName() . " (ID: " . $participant->addID() . ")\n";
- //}
+//   echo "Participant: " . $participant->getName() . " (ID: " . $participant->addID() . ")\n";
+//}
 
-// foreach ($events as $event) {
-//     echo "Event: " . $event->getTitle() . " (ID: " . $event->getID() . ")\n";
-// }
+foreach ($events as $eventx) {
+    echo "Event: " . $eventx->getTitle() . " Description: " . $eventx->getDescription() . " Address: " . $eventx->getAddress() . " Start Time: " . $eventx->getStartTime() . " End Time: " . $eventx->getEndTime() . " (ID: " . $eventx->getID() . ") <br>";
+}
