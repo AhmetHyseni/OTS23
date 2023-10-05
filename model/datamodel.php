@@ -1,42 +1,61 @@
 <?php
 
-class Participant {
+class Participant
+{
+    private $id;
     private $firstName;
     private $lastName;
     private $email;
 
-    public function __construct($firstName, $lastName, $email) {
+    public function __construct($firstName, $lastName, $email)
+    {
+
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
     }
 
-    public function getFirstName() {
+    public function getFirstName()
+    {
         return $this->firstName;
     }
 
-    public function setFirstName($firstName) {
+    public function setFirstName($firstName)
+    {
         $this->firstName = $firstName;
     }
 
-    public function getLastName() {
+    public function getLastName()
+    {
         return $this->lastName;
     }
 
-    public function setLastName($lastName) {
+    public function setLastName($lastName)
+    {
         $this->lastName = $lastName;
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
+    }
+    public function getid()
+    {
+        return $this->id;
+    }
+    public function setid($id)
+    {
+        $this->id = $id;
     }
 }
 
-class Event {
+class Event
+{
     private $ID;
     private $title;
     private $description;
@@ -45,11 +64,13 @@ class Event {
     private $endTime;
     private $participants = array();
 
-    public function getID(){
+    public function getID()
+    {
         return $this->ID;
     }
 
-    public function __construct($title, $description, $address, $startTime, $endTime) {
+    public function __construct($title, $description, $address, $startTime, $endTime)
+    {
         $this->title = $title;
         $this->description = $description;
         $this->address = $address;
@@ -57,55 +78,68 @@ class Event {
         $this->endTime = $endTime;
     }
 
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    public function getAddress() {
+    public function getAddress()
+    {
         return $this->address;
     }
 
-    public function setAddress($address) {
+    public function setAddress($address)
+    {
         $this->address = $address;
     }
 
-    public function getStartTime() {
+    public function getStartTime()
+    {
         return $this->startTime;
     }
 
-    public function setStartTime($startTime) {
+    public function setStartTime($startTime)
+    {
         $this->startTime = $startTime;
     }
 
-    public function getEndTime() {
+    public function getEndTime()
+    {
         return $this->endTime;
     }
 
-    public function setEndTime($endTime) {
+    public function setEndTime($endTime)
+    {
         $this->endTime = $endTime;
     }
 
-    public function getParticipants() {
+    public function getParticipants()
+    {
         return $this->participants;
     }
 
-    public function addParticipant(Participant $participant) {
+    public function addParticipant(Participant $participant)
+    {
         $this->participants[] = $participant;
     }
 
-    public function removeParticipant(Participant $participant) {
+    public function removeParticipant(Participant $participant)
+    {
         $key = array_search($participant, $this->participants);
         if ($key !== false) {
             unset($this->participants[$key]);

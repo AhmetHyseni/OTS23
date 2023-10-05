@@ -45,7 +45,8 @@ class MySQLDataAccess
         // Fetch results and add them to the $participants array
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            $participant = new Participant("Jane", "Smith", "jangg@example.com");
+            $participant = new Participant("Jaane", "Smmith", "jaang@example.com");
+            $participant->setid($row['id']);
             $participant->setFirstName($row['first_name']);
             $participant->setLastName($row['last_name']);
             $participant->setEmail($row['email']);
@@ -57,13 +58,15 @@ class MySQLDataAccess
 
     public function updateParticipant(Participant $participant)
     {
+        $id = $participant->getId(); // Assuming you have a method to retrieve the participant's ID
         $firstName = $participant->getFirstName();
         $lastName = $participant->getLastName();
         $email = $participant->getEmail();
 
         // Use a prepared statement to update the participant's information
-        $sql = "UPDATE participants SET first_name = :firstName, last_name = :lastName, email = :email";
+        $sql = "UPDATE participants SET first_name = :firstName, last_name = :lastName, email = :email WHERE id = :id";
         $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); // Assuming ID is an integer
         $stmt->bindParam(':firstName', $firstName);
         $stmt->bindParam(':lastName', $lastName);
         $stmt->bindParam(':email', $email);
@@ -77,14 +80,13 @@ class MySQLDataAccess
         }
     }
 
-    public function deleteParticipant(Participant $participant)
-    {
-        $email = $participant->getEmail(); // Assuming you have a method to retrieve the participant's email
 
-        // Use a prepared statement to delete the participant by their email
-        $sql = "DELETE FROM participants WHERE email = ?";
+    public function deleteParticipant($participantId)
+    {
+        // Define the SQL query to delete a participant by their ID
+        $sql = "DELETE FROM participants WHERE id = :participantId";
         $stmt = $this->databaseConnection->prepare($sql);
-        $stmt->bind_param("s", $email); // "s" represents a string, adjust if email is of a different type
+        $stmt->bindParam(':participantId', $participantId, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             // Participant deleted successfully
