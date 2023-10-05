@@ -149,7 +149,7 @@
 
 <div class="event-form">
     <h2>Lisää uusi tapahtuma</h2>
-    <form method="post" action="lisaa_tapahtuma.php">
+    <form method="post" action="/OTS23/model/addevent.php">
         <label for="title">Tapahtuman nimi:</label>
         <input type="text" id="title" name="title" required><br>
         <label for="description">Kuvaus:</label>
