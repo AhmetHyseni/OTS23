@@ -158,3 +158,25 @@ class MySQLDataAccess
 
 
 }
+
+include_once "../env.php";
+
+use DevCoder\DotEnv;
+
+(new DotEnv(__DIR__ . '/../.env'))->load();
+
+
+$host = "localhost"; // Database host (usually "localhost")
+$dbdns = getenv("DATABASE_DNS"); // Your database name
+$username = getenv("DATABASE_USERNAME"); // Your database username
+$password = getenv("DATABASE_PASSWORD"); // Your database password
+
+try {
+    $databaseConnection = new PDO($dbdns, $username, $password);
+    $databaseConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+
+$dataAccess = new MySQLDataAccess($databaseConnection);
+

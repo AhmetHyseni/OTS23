@@ -108,8 +108,8 @@
     // Yhdistetään tietokantaan (korvaa tiedot omilla tiedoillasi)
     $servername = "localhost";
     $username = "root";
-    $password = "";
-    $dbname = "events_manager";
+    $password = ""; // Your database password    
+    $dbname = "database";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
