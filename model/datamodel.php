@@ -1,11 +1,12 @@
 <?php
 
 class Participant {
+    private $id;
     private $firstName;
     private $lastName;
     private $email;
 
-    public function __construct($firstName, $lastName, $email) {
+    public function __construct( $firstName, $lastName, $email) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->email = $email;
@@ -34,6 +35,13 @@ class Participant {
     public function setEmail($email) {
         $this->email = $email;
     }
+    public function getid(){
+        return $this->id;
+    }
+    public function setid($id){
+        return $this->$id;
+    }
+
 }
 
 class Event {
@@ -43,6 +51,7 @@ class Event {
     private $startTime;
     private $endTime;
     private $participants = array();
+
 
     public function __construct($title, $description, $address, $startTime, $endTime) {
         $this->title = $title;
