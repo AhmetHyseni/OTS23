@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,6 +34,7 @@
     th, td {
         padding: 8px;
         text-align: left;
+        color: #333;
     }
 
     th {
@@ -60,6 +61,7 @@
 
     label {
         display: block;
+        color: #333;
         margin-bottom: 10px;
     }
 
@@ -93,7 +95,6 @@
     border: 1px solid #333;
     border-radius: 5px;
     }
-
 
     </style>
 </head>
@@ -130,10 +131,10 @@
     </form>
 
     <?php
-
-include 'mysqldataaccess.php';
-include 'datamodel.php';
-
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "events_manager";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -167,17 +168,27 @@ include 'datamodel.php';
     if ($result->num_rows > 0) {
         // Tulostetaan tiedot HTML-taulukkoon
         echo "<table>";
-        echo "<tr><th>Etunimi</th><th>Sukunimi</th><th>Sähköposti</th></tr>";
+        echo "<tr><th>Etunimi</th><th>Sukunimi</th><th>Sähköposti</th><th>Muokkaa</th><th>Poista</th></tr>";
         while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["first_name"]. "</td><td>" . $row["last_name"]. "</td><td>" . $row["email"]. "</td></tr>";
+            echo "<tr>";
+            echo "<td>" . $row["first_name"]. "</td>";
+            echo "<td>" . $row["last_name"]. "</td>";
+            echo "<td>" . $row["email"]. "</td>";
+            echo "<td><a href='edit.php?id=" . $row["id"] . "'><img src='icons/muokkaa.png' alt='Muokkaa'></a></td>"; // Muokkaa-linkki kuvalla
+            echo "<td><a href='delete.php?id=" . $row["id"] . "'><img src='icons/trash_can.png' alt='Poista'></a></td>"; // Poista-linkki kuvalla
+            echo "</tr>";
         }
+        
+        
         echo "</table>";
     } else {
         echo "Ei osallistujia.";
     }
+    
 
     // Suljetaan tietokantayhteys
     $conn->close();
-    ?>
+    
+    ?>  
 </body>
 </html>

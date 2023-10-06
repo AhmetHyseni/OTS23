@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -94,6 +94,9 @@
             <a href="käyttäjät.html">Käyttäjät</a>
         </div>
         <div class="navigointilinkki">
+            <a href="ilmoittaudu.php">ilmoittaudu</a>
+        </div>
+        <div class="navigointilinkki">
             <a href="osallistujat.php">Osallistujat</a>
         </div>
         <div class="navigointilinkki">
@@ -109,7 +112,7 @@
     $servername = "localhost";
     $username = "root";
     $password = ""; // Your database password    
-    $dbname = "database";
+    $dbname = "events_manager";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -133,6 +136,10 @@
             echo "<p>Osoite: " . $row["address"] . "</p>";
             echo "<p class='event-date'>Aloitus-aika: " . $row["start_time"] . "</p>";
             echo "<p class='event-date'>Lopetus-aika: " . $row["end_time"] . "</p>";
+            echo "<div class='event-item'>";
+            echo "<a href='osallistuja.php?id=" . $row["id"] . "'>Avaa osallistujat</a>";
+            echo "</div>";
+
             echo "<div class='event-item'>
             <a href='poista_tapahtuma.php?id=" . $row["id"] . "'>Poista</a>
             </div>";
@@ -165,6 +172,6 @@
 </div>
 
 
-
 </body>
 </html>
+
