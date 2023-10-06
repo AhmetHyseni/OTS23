@@ -130,10 +130,10 @@
     </form>
 
     <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "events_manager";
+
+include 'mysqldataaccess.php';
+include 'datamodel.php';
+
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
