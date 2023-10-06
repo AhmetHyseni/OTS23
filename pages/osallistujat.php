@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Osallistujat</title>
     <style>
 
@@ -97,6 +98,23 @@
     </style>
 </head>
 <body>
+
+    <div class="navigointi">
+        <div class="navigointilinkki">
+            <a href="asetukset.html">Asetukset</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="käyttäjät.html">Käyttäjät</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="osallistujat.php">Osallistujat</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="tapahtumat.php">Tapahtumat</a>
+        </div>
+
+    </div>
+        
     <h1>Osallistujalista</h1>
     <form action="" method="post">
         <label for="first_name">Etunimi:</label>
