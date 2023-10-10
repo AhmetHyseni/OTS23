@@ -136,6 +136,38 @@ class MySQLDataAccess
             return $events;
         } else {
             // Error occurred while fetching events
+
+          
+            return [];
+        }
+    }
+
+    public function updateEvents(Event $event)
+    {
+        $id = $event->getId();
+        $title = $event->getTitle();
+        $description = $event->getDescription();
+        $address = $event->getAddress();
+        $startTime = $event->getStartTime()->format('Y-m-d H:i:s');
+        $endTime = $event->getEndTime()->format('Y-m-d H:i:s');
+
+        // Use a prepared statement to update the participant's information
+        $sql = "UPDATE events SET title = :title, description = :description, address = :address, startTime = :startTime, endTime = :endTime WHERE id = :id";
+        $stmt = $this->databaseConnection->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':lastName', $description);
+        $stmt->bindParam(':address', $address);
+        $stmt->bindParam(':startTime', $startTime);
+        $stmt->bindParam(':endTime', $endTime);
+
+        if ($stmt->execute()) {
+            // Participant updated successfully
+            return true;
+        } else {
+            // Error occurred while updating participant
+
+          
             return false;
         }
     }
