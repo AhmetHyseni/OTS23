@@ -22,7 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO events_participants (event_id, participant_id) VALUES ('$event_id', '$participant_id')";
     
     if ($conn->query($sql) === TRUE) {
-        echo "Ilmoittautuminen onnistui!";
+        // Uudelleenohjaa käyttäjä osallistuja.php-sivulle
+        header("Location: osallistuja.php");
+        exit(); // Tärkeää lopettaa skripti tässä
     } else {
         echo "Virhe ilmoittautumisessa: " . $conn->error;
     }
