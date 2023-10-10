@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Osallistujat</title>
     <style>
 
@@ -33,6 +34,7 @@
     th, td {
         padding: 8px;
         text-align: left;
+        color: #333;
     }
 
     th {
@@ -59,6 +61,7 @@
 
     label {
         display: block;
+        color: #333;
         margin-bottom: 10px;
     }
 
@@ -93,10 +96,26 @@
     border-radius: 5px;
     }
 
-
     </style>
 </head>
 <body>
+
+    <div class="navigointi">
+        <div class="navigointilinkki">
+            <a href="asetukset.html">Asetukset</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="käyttäjät.html">Käyttäjät</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="osallistujat.php">Osallistujat</a>
+        </div>
+        <div class="navigointilinkki">
+            <a href="tapahtumat.php">Tapahtumat</a>
+        </div>
+
+    </div>
+        
     <h1>Osallistujalista</h1>
     <form action="" method="post">
         <label for="first_name">Etunimi:</label>
@@ -149,17 +168,27 @@
     if ($result->num_rows > 0) {
         // Tulostetaan tiedot HTML-taulukkoon
         echo "<table>";
-        echo "<tr><th>Etunimi</th><th>Sukunimi</th><th>Sähköposti</th></tr>";
+        echo "<tr><th>Etunimi</th><th>Sukunimi</th><th>Sähköposti</th><th>Muokkaa</th><th>Poista</th></tr>";
         while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["first_name"]. "</td><td>" . $row["last_name"]. "</td><td>" . $row["email"]. "</td></tr>";
+            echo "<tr>";
+            echo "<td>" . $row["first_name"]. "</td>";
+            echo "<td>" . $row["last_name"]. "</td>";
+            echo "<td>" . $row["email"]. "</td>";
+            echo "<td><a href='edit.php?id=" . $row["id"] . "'><img src='icons/muokkaa.png' alt='Muokkaa'></a></td>"; // Muokkaa-linkki kuvalla
+            echo "<td><a href='delete.php?id=" . $row["id"] . "'><img src='icons/trash_can.png' alt='Poista'></a></td>"; // Poista-linkki kuvalla
+            echo "</tr>";
         }
+        
+        
         echo "</table>";
     } else {
         echo "Ei osallistujia.";
     }
+    
 
     // Suljetaan tietokantayhteys
     $conn->close();
-    ?>
+    
+    ?>  
 </body>
 </html>

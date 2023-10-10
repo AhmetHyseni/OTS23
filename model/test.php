@@ -1,4 +1,5 @@
 <?php
+
 $host = "localhost"; // Database host (usually "localhost")
 $dbname = "events_manager"; // Your database name
 $username = "root"; // Your database username
@@ -11,10 +12,11 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 
+
+
 include 'mysqldataaccess.php';
 include 'datamodel.php';
 
-$dataAccess = new MySQLDataAccess($databaseConnection);
 
 // Example: Creating a new Participant
 // $participant = new Participant("John Doe");  
@@ -27,32 +29,16 @@ $event = new Event("opettaja", "random", "street", new DateTime(), new DateTime(
 // Example: Retrieving Participants and Events
 // $participants = $dataAccess->getParticipants();
 // $events = $dataAccess->getEvents();
-$participant = new Participant("Jaane", "Smmith", "janesse@example.com");
-$participant->setid(7);
-$dataAccess->updateParticipant($participant);
 
-// Assuming you have an existing Participant object with the new data
-//$updatedParticipant = new Participant(7, "NewFirstName", "NewLastName", "newemail@example.com");
 
-// Retrieve the existing data for the participant from the database
-//$existingParticipant = $dataAccess->getParticipantById($updatedParticipant->getId());
+#$participant = new Participant("Jaane", "Smmith", "janesse@example.com");
+#$participant->setid(7);
+#$dataAccess->updateParticipant($participant);
 
-// Check if the participant exists
-//if ($existingParticipant) {
-//  // Update the participant object with the new data
-//$existingParticipant->setFirstName($updatedParticipant->getFirstName());
-//    $existingParticipant->setLastName($updatedParticipant->getLastName());
-//  $existingParticipant->setEmail($updatedParticipant->getEmail());
+#$participant = new Participant("Jaane", "Smmith", "janesse@example.com");
+#$dataAccess->addParticipant($participant);
 
-// Update the participant in the database
-//  if ($dataAccess->updateParticipant($existingParticipant)) {
-//        echo "Participant information updated successfully!";
-//   } else {
-//     echo "Error occurred while updating participant information.";
-//    }
-//} else {
-//  echo "Participant not found.";
-//}
+$dataAccess->deleteParticipant(9);
 
 //$events = $dataAccess->getEvents();
 
