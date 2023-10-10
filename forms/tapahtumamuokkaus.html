@@ -23,7 +23,7 @@
     </div>
 
     <h1>Muokkaa tapahtumaa:</h1>
-    <form action="tapahtumamuokkaus.php" method="post">
+    <form method="post">
       <label for="title">Otsikko:</label>
       <input type="text" name="title" id="title" required><br><br>
 
@@ -34,12 +34,12 @@
       <input type="text" name="address" id="address" required><br><br>
 
       <label for="start_time">Aloitus:</label>
-      <input type="date" name="start_time" id="start_time" required><br><br>
+      <input type="datetime-local" name="start_time" id="start_time" required><br><br>
 
       <label for="end_time">Loppuu:</label>
-      <input type="date" name="end_time" id="end_time" required><br><br>
+      <input type="datetime-local" name="end_time" id="end_time" required><br><br>
 
-      <input type="submit" value="Tallenna">
+      <input action="" type="submit" value="Tallenna">
       <a href="/OTS23/pages/tapahtumat.html">
         <input type="button" value="Peruuta" />
      </a>

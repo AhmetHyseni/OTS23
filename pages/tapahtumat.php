@@ -108,7 +108,7 @@
     // Yhdistetään tietokantaan (korvaa tiedot omilla tiedoillasi)
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = ""; // Your database password    
     $dbname = "events_manager";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -135,6 +135,9 @@
             echo "<p class='event-date'>Lopetus-aika: " . $row["end_time"] . "</p>";
             echo "<div class='event-item'>
             <a href='poista_tapahtuma.php?id=" . $row["id"] . "'>Poista</a>
+            </div>";
+            echo "<div class='event-item'>
+            <a href='/OTS23/model/getevent.php?id=" .$row["id"]. "'>Muokkaa</a>
             </div>";
             echo "</div>";
         }

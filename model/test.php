@@ -1,8 +1,8 @@
 <?php
 $host = "localhost"; // Database host (usually "localhost")
 $dbname = "events_manager"; // Your database name
-$username = "login"; // Your database username
-$password = "password123"; // Your database password
+$username = "root"; // Your database username
+$password = ""; // Your database password
 
 try {
     $databaseConnection = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
